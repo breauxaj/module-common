@@ -4,34 +4,13 @@
 #
 # Actions:
 #   - Defines numerous parameters used by other classes
-#   - Does not support other osfamily patterns - redhat only
 #
 class common::params {
   case $::osfamily {
+    'debian': { }
     'redhat': {
       case $::lsbmajdistrelease {
-        '7': {
-          $common_packages = [
-            'bash',
-            'ccze',
-            'expect',
-            'finger',
-            'gcc',
-            'htop',
-            'ImageMagick',
-            'nmap',
-            'openssl',
-            'reptyr',
-            'rrdtool',
-            'screen',
-            'strace',
-            'subversion',
-            'sysstat',
-            'tcpdump',
-            'telnet'
-          ]
-        }
-        default: {
+        6: {
           $common_packages = [
             'bash',
             'ccze',
@@ -55,6 +34,28 @@ class common::params {
             'telnet'
           ]
         }
+        '7': {
+          $common_packages = [
+            'bash',
+            'ccze',
+            'expect',
+            'finger',
+            'gcc',
+            'htop',
+            'ImageMagick',
+            'nmap',
+            'openssl',
+            'reptyr',
+            'rrdtool',
+            'screen',
+            'strace',
+            'subversion',
+            'sysstat',
+            'tcpdump',
+            'telnet'
+          ]
+        }
+        default: { }
       }
     }
     default: { }
