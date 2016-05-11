@@ -27,7 +27,7 @@
 class common (
   $ensure = 'latest'
 ) inherits ::common::params {
-  package { $::common::params::common_package:
+  package { $::common::params::common_packages:
     ensure  => $ensure,
   }
 
