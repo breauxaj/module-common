@@ -27,7 +27,7 @@ class common::params {
       ]
     }
     'centos', 'redhat': {
-      case $::lsbmajdistrelease {
+      case $::rhel_version {
         '6': {
           $common_packages = [
             'bash',
@@ -74,7 +74,7 @@ class common::params {
           ]
         }
         default: {
-          fail("Unsupported version: ${::lsbmajdistrelease}")
+          fail("Unsupported version: ${::rhel_version}")
         }
       }
     }
