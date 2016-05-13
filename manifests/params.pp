@@ -6,11 +6,29 @@
 #   - Defines numerous parameters used by other classes
 #
 class common::params {
-  case $::osfamily {
-    'debian': { }
-    'redhat': {
+  case $::operatingsystem {
+    'amazon': {
+      $common_packages = [
+        'bash',
+        'expect',
+        'finger',
+        'gcc',
+        'htop',
+        'ImageMagick',
+        'nmap',
+        'openssl',
+        'rrdtool',
+        'screen',
+        'strace',
+        'subversion',
+        'sysstat',
+        'tcpdump',
+        'telnet'
+      ]
+    }
+    'centos', 'redhat': {
       case $::lsbmajdistrelease {
-        6: {
+        '6': {
           $common_packages = [
             'bash',
             'ccze',
@@ -55,10 +73,14 @@ class common::params {
             'telnet'
           ]
         }
-        default: { }
+        default: {
+          fail("Unsupported version: ${::lsbmajdistrelease}")
+        }
       }
     }
-    default: { }
+    default: {
+      fail("Unsupported platform: ${::operatingsystem}")
+    }
   }
 
 }
