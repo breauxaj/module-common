@@ -78,6 +78,12 @@ class common::params {
         }
       }
     }
+    'debian', 'ubuntu': {
+      $common_packages = [
+        'bash',
+        'ccze'
+      ]
+    }
     default: {
       fail("Unsupported platform: ${::operatingsystem}")
     }
