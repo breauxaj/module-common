@@ -81,7 +81,22 @@ class common::params {
     'debian', 'ubuntu': {
       $common_packages = [
         'bash',
-        'ccze'
+        'ccze',
+        'expect',
+        'finger',
+        'gcc',
+        'htop',
+        'imagemagick',
+        'nmap',
+        'openssl',
+        'reptyr',
+        'rrdtool',
+        'screen',
+        'strace',
+        'subversion',
+        'sysstat',
+        'tcpdump',
+        'telnet'
       ]
     }
     default: {
