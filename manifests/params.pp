@@ -6,28 +6,37 @@
 #   - Defines numerous parameters used by other classes
 #
 class common::params {
-  case $::operatingsystem {
-    'amazon': {
-      $common_packages = [
-        'bash',
-        'expect',
-        'finger',
-        'gcc',
-        'htop',
-        'ImageMagick',
-        'nmap',
-        'openssl',
-        'rrdtool',
-        'screen',
-        'strace',
-        'subversion',
-        'sysstat',
-        'tcpdump',
-        'telnet'
-      ]
+  case $::osfamily {
+    'Debian': {
+      case $::operatingsystemmajrelease {
+        '8': {
+          $common_packages = [
+            'bash',
+            'ccze',
+            'expect',
+            'finger',
+            'gcc',
+            'htop',
+            'imagemagick',
+            'nmap',
+            'openssl',
+            'reptyr',
+            'rrdtool',
+            'screen',
+            'strace',
+            'subversion',
+            'sysstat',
+            'tcpdump',
+            'telnet'
+          ]
+        }
+        default: {
+          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
+        }
+      }
     }
-    'centos', 'redhat': {
-      case $::rhel_version {
+    'RedHat': {
+      case $::operatingsystemmajrelease {
         '6': {
           $common_packages = [
             'bash',
@@ -74,34 +83,38 @@ class common::params {
           ]
         }
         default: {
-          fail("Unsupported version: ${::rhel_version}")
+          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
         }
       }
     }
-    'debian', 'ubuntu': {
-      $common_packages = [
-        'bash',
-        'ccze',
-        'expect',
-        'finger',
-        'gcc',
-        'htop',
-        'imagemagick',
-        'nmap',
-        'openssl',
-        'reptyr',
-        'rrdtool',
-        'screen',
-        'strace',
-        'subversion',
-        'sysstat',
-        'tcpdump',
-        'telnet'
-      ]
+    'Linux': {
+      case $::operatingsystem {
+        'Amazon': {
+          $common_packages = [
+            'bash',
+            'expect',
+            'finger',
+            'gcc',
+            'htop',
+            'ImageMagick',
+            'nmap',
+            'openssl',
+            'rrdtool',
+            'screen',
+            'strace',
+            'subversion',
+            'sysstat',
+            'tcpdump',
+            'telnet'
+          ]
+        }
+        default: {
+          fail("The ${module_name} module is not supported on an ${::operatingsystem} distribution.")
+        }
+      }
     }
     default: {
-      fail("Unsupported platform: ${::operatingsystem}")
+      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
   }
-
 }
