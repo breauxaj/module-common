@@ -6,6 +6,8 @@
 #   - Defines numerous parameters used by other classes
 #
 class common::params {
+  $common_package_ensure = 'latest'
+
   case $::operatingsystem {
     'Amazon': {
       $common_packages = [
