@@ -25,7 +25,7 @@
 #    }
 #
 class common (
-  $ensure = $::common::params::common_package_ensure:
+  $ensure = $::common::params::common_package_ensure
 ) inherits ::common::params {
   package { $::common::params::common_packages:
     ensure  => $ensure,
