@@ -6,7 +6,26 @@
 #   - Defines numerous parameters used by other classes
 #
 class common::params {
-  case $::osfamily {
+  case $::operatingsystem {
+    'Amazon': {
+      $common_packages = [
+        'bash',
+        'expect',
+        'finger',
+        'gcc',
+        'htop',
+        'ImageMagick',
+        'nmap',
+        'openssl',
+        'rrdtool',
+        'screen',
+        'strace',
+        'subversion',
+        'sysstat',
+        'tcpdump',
+        'telnet'
+      ]
+    }
     'Debian': {
       case $::operatingsystemmajrelease {
         '8': {
@@ -82,32 +101,13 @@ class common::params {
             'telnet'
           ]
         }
-        '2016': {
-          $common_packages = [
-            'bash',
-            'expect',
-            'finger',
-            'gcc',
-            'htop',
-            'ImageMagick',
-            'nmap',
-            'openssl',
-            'rrdtool',
-            'screen',
-            'strace',
-            'subversion',
-            'sysstat',
-            'tcpdump',
-            'telnet'
-          ]
-        }
         default: {
           fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
         }
       }
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
+      fail("The ${module_name} module is not supported on an ${::operatingsystem} based system.")
     }
   }
 }
