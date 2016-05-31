@@ -54,7 +54,7 @@ class common::params {
         }
       }
     }
-    'CentOS, 'RedHat': {
+    'CentOS', 'RedHat': {
       case $::operatingsystemmajrelease {
         '6': {
           $common_packages = [
