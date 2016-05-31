@@ -31,7 +31,7 @@ class common::params {
           ]
         }
         default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
+          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
         }
       }
     }
@@ -82,14 +82,7 @@ class common::params {
             'telnet'
           ]
         }
-        default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
-        }
-      }
-    }
-    'Linux': {
-      case $::operatingsystem {
-        'Amazon': {
+        '2016': {
           $common_packages = [
             'bash',
             'expect',
@@ -109,7 +102,7 @@ class common::params {
           ]
         }
         default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem} distribution.")
+          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
         }
       }
     }
