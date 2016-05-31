@@ -28,34 +28,6 @@ class common::params {
         'telnet'
       ]
     }
-    'Debian': {
-      case $::operatingsystemmajrelease {
-        '8': {
-          $common_packages = [
-            'bash',
-            'ccze',
-            'expect',
-            'finger',
-            'gcc',
-            'htop',
-            'imagemagick',
-            'nmap',
-            'openssl',
-            'reptyr',
-            'rrdtool',
-            'screen',
-            'strace',
-            'subversion',
-            'sysstat',
-            'tcpdump',
-            'telnet'
-          ]
-        }
-        default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
-        }
-      }
-    }
     'CentOS', 'RedHat': {
       case $::operatingsystemmajrelease {
         '6': {
@@ -91,6 +63,34 @@ class common::params {
             'gcc',
             'htop',
             'ImageMagick',
+            'nmap',
+            'openssl',
+            'reptyr',
+            'rrdtool',
+            'screen',
+            'strace',
+            'subversion',
+            'sysstat',
+            'tcpdump',
+            'telnet'
+          ]
+        }
+        default: {
+          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
+        }
+      }
+    }
+    'Debian': {
+      case $::operatingsystemmajrelease {
+        '8': {
+          $common_packages = [
+            'bash',
+            'ccze',
+            'expect',
+            'finger',
+            'gcc',
+            'htop',
+            'imagemagick',
             'nmap',
             'openssl',
             'reptyr',
