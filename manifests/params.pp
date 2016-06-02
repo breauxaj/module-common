@@ -28,7 +28,7 @@ class common::params {
         'telnet'
       ]
     }
-    'CentOS', 'RedHat': {
+    'CentOS', 'OracleLinux', 'RedHat': {
       case $::operatingsystemmajrelease {
         '6': {
           $common_packages = [
