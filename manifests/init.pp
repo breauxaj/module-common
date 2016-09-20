@@ -42,7 +42,7 @@ class common (
 
   $hosts = hiera_hash('hosts',{})
   create_resources('host',$hosts)
-  
+
   $mounts = hiera_hash('mounts',{})
   create_resources('mount',$mounts)
 
