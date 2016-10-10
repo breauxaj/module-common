@@ -64,4 +64,6 @@ class common (
   $users = hiera_hash('users',{})
   create_resources('user',$users)
 
+  common::role { 'default': }
+
 }
