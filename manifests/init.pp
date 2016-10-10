@@ -31,7 +31,7 @@ class common (
     ensure  => $ensure,
   }
 
-  $role = hiera('role')
+  $role = hiera('role','undefined')
 
   if $role {
     file { '/etc/role':
