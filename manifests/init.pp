@@ -31,6 +31,18 @@ class common (
     ensure  => $ensure,
   }
 
+  $role = hiera('role')
+
+  if $role {
+    file { '/etc/role':
+      ensure  => present,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => $role,
+    }
+  }
+
   $crons = hiera_hash('crons',{})
   create_resources('cron',$crons)
 
