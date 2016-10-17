@@ -46,6 +46,9 @@ class common (
   $crons = hiera_hash('crons',{})
   create_resources('cron',$crons)
 
+  $execs = hiera_hash('execs',{})
+  create_resources('exec',$execs)
+
   $files = hiera_hash('files',{})
   create_resources('file',$files)
 
