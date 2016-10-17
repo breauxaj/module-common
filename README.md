@@ -18,54 +18,8 @@ class { 'common':
 
 Hiera
 -----
-```
-crons:
-  do-something:
-    command: '/usr/local/sbin/somescript.sh  > /dev/null 2>&1'
-    user:    'root'
-    minute:  '0'
-    hour:    '0'
-```
-```
-files:
-  '/etc/myfolder':
-    ensure: directory
-    owner:  'root'
-    group:  'root'
-    mode:   '0700'
-```
-```
-groups:
-  somegroup:
-    ensure: present
-    gid:    1000
-```
-```
-hosts:
-  "%{::fqdn}":
-    ip:           "%{::ipaddress}"
-    host_aliases: "%{::hostname}"
-```
-```
-ssh_authorized_keys:
-  'nouser@somehost':
-    user: 'nouser'
-    type: 'ssh-rsa'
-    key:  'ImNotARealSSHKey'
-```
-```
-users:
-  auser:
-    ensure:     present
-    comment:    'A User'
-    gid:        1000
-    groups:     'auser'
-    home:       '/home/auser'
-    password:   'notarealpassword'
-    shell:      '/bin/bash'
-    managehome: true
-    uid:        1000
-```
+
+Review the hiera folder for samples of the usage.
 
 License
 -------
