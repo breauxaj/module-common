@@ -58,11 +58,11 @@ class common (
   $hosts = hiera_hash('hosts',{})
   create_resources('host',$hosts)
 
-  $mounts = hiera_hash('mounts',{})
-  create_resources('mount',$mounts)
-
   $keys = hiera_hash('ssh_authorized_keys',{})
   create_resources('ssh_authorized_key',$keys)
+
+  $mounts = hiera_hash('mounts',{})
+  create_resources('mount',$mounts)
 
   $users = hiera_hash('users',{})
   create_resources('user',$users)
