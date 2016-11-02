@@ -12,6 +12,7 @@ class common::params {
     'Amazon': {
       $common_packages = [
         'bash',
+        'deltarpm',
         'expect',
         'finger',
         'gcc',
@@ -60,6 +61,7 @@ class common::params {
           $common_packages = [
             'bash',
             'ccze',
+            'deltarpm',
             'expect',
             'finger',
             'gcc',
