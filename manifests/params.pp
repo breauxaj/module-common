@@ -85,9 +85,9 @@ class common::params {
         }
       }
     }
-    'Debian': {
+    'Debian', 'Ubuntu': {
       case $::operatingsystemmajrelease {
-        '8': {
+        '8', '14': {
           $common_packages = [
             'bash',
             'ccze',
