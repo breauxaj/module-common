@@ -18,12 +18,6 @@
 #      ensure => 'latest'
 #    }
 #
-#  To remove the installation, use:
-#
-#    class { 'common':
-#      ensure => 'absent'
-#    }
-#
 class common (
   $ensure = $::common::params::common_package_ensure
 ) inherits ::common::params {
