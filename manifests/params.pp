@@ -85,9 +85,38 @@ class common::params {
         }
       }
     }
-    'Debian', 'Ubuntu': {
+    'Debian': {
       case $::operatingsystemmajrelease {
-        '8', '14.04': {
+        '8': {
+          $common_packages = [
+            'bash',
+            'ccze',
+            'expect',
+            'finger',
+            'gcc',
+            'htop',
+            'imagemagick',
+            'nmap',
+            'openssl',
+            'patch',
+            'reptyr',
+            'rrdtool',
+            'screen',
+            'strace',
+            'subversion',
+            'sysstat',
+            'tcpdump',
+            'telnet'
+          ]
+        }
+        default: {
+          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
+        }
+      }
+    }
+    'Ubuntu': {
+      case $::operatingsystemrelease {
+        '14.04': {
           $common_packages = [
             'bash',
             'ccze',
