@@ -10,44 +10,19 @@ class common::params {
 
   case $::operatingsystem {
     'Amazon': {
-      $common_packages = [
-        'bash',
-        'deltarpm',
-        'expect',
-        'finger',
-        'gcc',
-        'htop',
-        'ImageMagick',
-        'nmap',
-        'openssl',
-        'patch',
-        'rrdtool',
-        'screen',
-        'strace',
-        'subversion',
-        'sysstat',
-        'tcpdump',
-        'telnet'
-      ]
-    }
-    'CentOS', 'OracleLinux', 'RedHat', 'Scientific': {
       case $::operatingsystemmajrelease {
-        '6': {
+        default: {
           $common_packages = [
             'bash',
-            'ccze',
-            'compat-libstdc++-296',
-            'compat-libstdc++-33',
+            'deltarpm',
             'expect',
             'finger',
             'gcc',
             'htop',
             'ImageMagick',
-            'mcrypt',
             'nmap',
             'openssl',
             'patch',
-            'reptyr',
             'rrdtool',
             'screen',
             'strace',
@@ -57,7 +32,11 @@ class common::params {
             'telnet'
           ]
         }
-        '7': {
+      }
+    }
+    'CentOS', 'OracleLinux', 'RedHat': {
+      case $::operatingsystemmajrelease {
+        default: {
           $common_packages = [
             'bash',
             'ccze',
@@ -80,14 +59,11 @@ class common::params {
             'telnet'
           ]
         }
-        default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
-        }
       }
     }
     'Debian': {
       case $::operatingsystemmajrelease {
-        '8': {
+        default: {
           $common_packages = [
             'bash',
             'ccze',
@@ -108,38 +84,6 @@ class common::params {
             'tcpdump',
             'telnet'
           ]
-        }
-        default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
-        }
-      }
-    }
-    'Ubuntu': {
-      case $::operatingsystemrelease {
-        '14.04': {
-          $common_packages = [
-            'bash',
-            'ccze',
-            'expect',
-            'finger',
-            'gcc',
-            'htop',
-            'imagemagick',
-            'nmap',
-            'openssl',
-            'patch',
-            'reptyr',
-            'rrdtool',
-            'screen',
-            'strace',
-            'subversion',
-            'sysstat',
-            'tcpdump',
-            'telnet'
-          ]
-        }
-        default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem} ${::operatingsystemmajrelease} distribution.")
         }
       }
     }
