@@ -8,87 +8,96 @@
 class common::params {
   $common_package_ensure = 'latest'
 
-  case $::operatingsystem {
-    'Amazon': {
-      case $::operatingsystemmajrelease {
-        default: {
-          $common_packages = [
-            'bash',
-            'deltarpm',
-            'expect',
-            'finger',
-            'gcc',
-            'htop',
-            'ImageMagick',
-            'nmap',
-            'openssl',
-            'patch',
-            'rrdtool',
-            'screen',
-            'strace',
-            'subversion',
-            'sysstat',
-            'tcpdump',
-            'telnet'
-          ]
-        }
-      }
-    }
-    'CentOS', 'OracleLinux', 'RedHat': {
-      case $::operatingsystemmajrelease {
-        default: {
-          $common_packages = [
-            'bash',
-            'ccze',
-            'deltarpm',
-            'expect',
-            'finger',
-            'gcc',
-            'htop',
-            'ImageMagick',
-            'nmap',
-            'openssl',
-            'patch',
-            'reptyr',
-            'rrdtool',
-            'screen',
-            'strace',
-            'subversion',
-            'sysstat',
-            'tcpdump',
-            'telnet'
-          ]
-        }
-      }
-    }
+  case $::osfamily {
     'Debian': {
-      case $::operatingsystemmajrelease {
+      case $::operatingsystem {
         default: {
-          $common_packages = [
-            'bash',
-            'ccze',
-            'expect',
-            'finger',
-            'gcc',
-            'htop',
-            'imagemagick',
-            'nmap',
-            'openssl',
-            'patch',
-            'reptyr',
-            'rrdtool',
-            'screen',
-            'strace',
-            'subversion',
-            'sysstat',
-            'tcpdump',
-            'telnet'
-          ]
+          case $::operatingsystemmajrelease {
+            default: {
+              $common_packages = [
+                'bash',
+                'ccze',
+                'expect',
+                'finger',
+                'gcc',
+                'htop',
+                'imagemagick',
+                'nmap',
+                'openssl',
+                'patch',
+                'reptyr',
+                'rrdtool',
+                'screen',
+                'strace',
+                'subversion',
+                'sysstat',
+                'tcpdump',
+                'telnet'
+              ]
+            }
+          }
+        }
+      }
+    }
+    'RedHat': {
+      case $::operatingsystem {
+        'Amazon': {
+          case $::operatingsystemmajrelease {
+            default: {
+              $common_packages = [
+                'bash',
+                'deltarpm',
+                'expect',
+                'finger',
+                'gcc',
+                'htop',
+                'ImageMagick',
+                'nmap',
+                'openssl',
+                'patch',
+                'rrdtool',
+                'screen',
+                'strace',
+                'subversion',
+                'sysstat',
+                'tcpdump',
+                'telnet'
+              ]
+            }
+          }
+        }
+        default: {
+          case $::operatingsystemmajrelease {
+            default: {
+              $common_packages = [
+                'bash',
+                'ccze',
+                'deltarpm',
+                'expect',
+                'finger',
+                'gcc',
+                'htop',
+                'ImageMagick',
+                'nmap',
+                'openssl',
+                'patch',
+                'reptyr',
+                'rrdtool',
+                'screen',
+                'strace',
+                'subversion',
+                'sysstat',
+                'tcpdump',
+                'telnet'
+              ]
+            }
+          }
         }
       }
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::operatingsystem} based system.")
+      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
   }
+
 }
